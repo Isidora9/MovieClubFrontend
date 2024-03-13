@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
-// import * as React from 'react';
-// import ImageListItem from '@material-ui/core/ImageListItem';
-// import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import PropTypes from 'prop-types';
-import MovieTile from './MovieTile'; 
 import ImageList from '@mui/material/ImageList';
-// import './MovieList.css';
 
+import React, { useEffect, useState } from "react";
+import MovieTile from './MovieTile'; 
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -26,15 +21,14 @@ const MovieList = () => {
   }, [])
 
   return (
-    <div /*className="gridListDiv"*/>
-        <h1 /*className="header"*/>Take a look at our movies...</h1>
-        <div /*className="gridListDiv1"*/>
-          <ImageList sx={{ width: 500, height: 450 }} cols={2}  /*cols={6} cellheight={300} className="gridList"*/>
+    <div>
+        <h1>Take a look at our movies...</h1>
+        <div>
+          <ImageList sx={{ width: '100%', height: '100%' }}>
             <MovieTile movies={movies}/>
           </ImageList>
         </div>
     </div>
-
   )
 }
 

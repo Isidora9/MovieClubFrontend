@@ -1,29 +1,29 @@
 .root {
-    display: 'flex';
-    flex-wrap: 'wrap';
-    justify-content: 'space-around';
-    overflow: 'hidden';
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
 }
 
 .gridList {
-    width: "1000px";
+    width: 1000px;
 }
 
 .list {
-    width: '100%';
-    max-width: '36ch';
+    width: 100%;
+    max-width: 36ch;
 }
 
 .inline {
-    display: 'inline';
+    display: inline;
 }
 
 .gridListDiv {
-    margin-right: "70px";
-    margin-left: "70px";
+    margin-right: 70px;
+    margin-left: 70px;
 }
 
 .gridListDiv1 {
-    margin-right: "10px";
-    margin-left: "10px";
+    margin-right: 10px;
+    margin-left: 10px;
 }

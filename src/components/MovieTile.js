@@ -1,38 +1,37 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-// import './MovieTile.css';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-// import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-// import GridListTile from '@material-ui/core/GridListTile';
 import ImageListItem from '@mui/material/ImageListItem';
 
 
 const MovieTile = ({ movies }) => {
   return (
-  <div /*className='gridListTitle1'*/> 
+  <>
     {movies.map((movie, index) => (
-      <div key={index}>
-        <ImageListItem key="Subheader" cols={2} /*className='gridListTitle'*/>
-          <img /*className="book-image"*/ src="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f" alt="movie url" loading="lazy" />
-          <ImageListItemBar>
-            title={movie.name}
-            subtitle={<span>by: {movie.genre}</span>}
-            position="below"
-            {/* {movie.name} */}
-            {/* actionIcon={
-                <IconButton aria-label={`info about ${movie.name}`} className='icon'>
-                    <InfoIcon />
+      <ImageListItem key={movie.name}>
+        <img
+              // srcSet="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg?w=248&fit=crop&auto=format&dpr=2 2x"
+              src="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg"
+              alt={movie.name}
+              loading="lazy"
+            />
+            <ImageListItemBar
+              title={movie.name}
+              subtitle={movie.genre}
+              actionIcon={
+                <IconButton
+                  sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                  aria-label={`info about ${movie.name}`}
+                >
+                  <InfoIcon />
                 </IconButton>
-              } */}
-          </ImageListItemBar>
-        </ImageListItem>
-      </div>
+              }
+            />
+      </ImageListItem>
        ))}
-      </div>
+      </>
   )
-
 };
 
 export default MovieTile;
