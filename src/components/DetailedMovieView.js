@@ -10,11 +10,12 @@ const DetailedMovieView = () => {
 
     const params = useParams();
     const [movie, setMovie] = useState(""); 
+    const [availableCopiesNum, setAvailableCopiesNum] = useState(0);
 
     function getMovie() {
         fetch("http://localhost:8080/movies/" + params.id, {
         })
-            .then(
+        .then(
             response => {
                 if (response.ok) {
                     response.json()
@@ -22,7 +23,24 @@ const DetailedMovieView = () => {
                             setMovie(data);
                         })
                 }
-            })
+            }
+        )
+    }
+
+    function getNumOfAvailableCopies() {
+        fetch("http://localhost:8080/movies/availableCopies/" + params.id, {
+        })
+        .then(
+            response => {
+                if (response.ok) {
+                    response.json()
+                    .then(data => {
+                        console.log(data);
+                        setAvailableCopiesNum(data);
+                    })
+                }
+            }
+        )
     }
 
     function rentCopy() {
@@ -38,9 +56,11 @@ const DetailedMovieView = () => {
             })
     }
 
-
     useEffect(() => {
-        return () => getMovie();
+        return () => {
+            getMovie();
+            getNumOfAvailableCopies();
+        };
       }, [])
 
     return (
@@ -51,7 +71,7 @@ const DetailedMovieView = () => {
                         <img src="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg" alt="image url" />
                     </CardContent>
                 </Card>
-                <br /><Typography variant="body2" component="p" color="textSecondary">13 available copies</Typography>
+                <br /><Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copies</Typography>
                 <Button variant="outlined" onClick={() => rentCopy()}>Rent</Button>
             </div>
             <div>
@@ -64,7 +84,6 @@ const DetailedMovieView = () => {
                 </Typography>
             </div>
         </div>
-    
     );
 }
 
