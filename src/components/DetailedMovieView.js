@@ -52,6 +52,7 @@ const DetailedMovieView = () => {
         })
             .then(response => response.json())
             .then(data => {
+                getNumOfAvailableCopies();
                 alert("You successfully rented a copy!")
             })
     }
@@ -71,8 +72,27 @@ const DetailedMovieView = () => {
                         <img src="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg" alt="image url" />
                     </CardContent>
                 </Card>
-                <br /><Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copies</Typography>
-                <Button variant="outlined" onClick={() => rentCopy()}>Rent</Button>
+                <br />
+
+                {(() => {
+                    if (availableCopiesNum > 1) {
+                    return (<>
+                        <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copies</Typography>
+                        <Button variant="outlined" onClick={() => {rentCopy(); /*window.location.reload();*/}}>Rent</Button>
+                    </>
+                    )
+                    } else if (availableCopiesNum == 1) {
+                    return (<>
+                        <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copy</Typography>
+                        <Button variant="outlined" onClick={() => {rentCopy(); /*window.location.reload();*/}}>Rent</Button>
+                    </>
+                    )} else {
+                        return (<>
+                            <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copies</Typography>
+                            <Button variant="outlined" onClick={() => rentCopy()} disabled>Rent</Button>
+                        </>    
+                    )}
+                })()}
             </div>
             <div>
                 <h1>{movie.name}</h1>
