@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router-dom";
 
 
 const DetailedMovieView = () => {
@@ -11,20 +12,27 @@ const DetailedMovieView = () => {
     const params = useParams();
     const [movie, setMovie] = useState(""); 
     const [availableCopiesNum, setAvailableCopiesNum] = useState(0);
+    const navigate = useNavigate();
 
     function getMovie() {
         fetch("http://localhost:8080/movies/" + params.id, {
         })
-        .then(
-            response => {
+        .then(response => {
                 if (response.ok) {
                     response.json()
                         .then(data => {
                             setMovie(data);
                         })
                 }
+                else {
+                    throw new Error("No movie with id: " + params.id + " found.")
+                }
             }
         )
+        .catch(error => {
+            navigate('/');
+            alert(error);
+        })
     }
 
     function getNumOfAvailableCopies() {
@@ -50,10 +58,18 @@ const DetailedMovieView = () => {
                 "Content-Type": "application/json",
             }
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("User has too many copies rented.")
+                }
+                return response.json();
+            })
             .then(data => {
                 getNumOfAvailableCopies();
                 alert("You successfully rented a copy!")
+            })
+            .catch(error => {
+                alert(error);
             })
     }
 
