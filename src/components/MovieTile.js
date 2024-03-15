@@ -24,7 +24,7 @@ const MovieTile = ({ movies, movieDetails }) => {
                 <IconButton
                   sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
                   aria-label={`info about ${movie.name}`}
-                  onClick={() => movieDetails(2)}
+                  onClick={() => movieDetails(movie.id)}
                 >
                   <InfoIcon />
                 </IconButton>
