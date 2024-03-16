@@ -85,7 +85,7 @@ const DetailedMovieView = () => {
             <div>
                 <Card raised>
                     <CardContent>
-                        <img src="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg" alt="image url" />
+                        <img src={movie.imageUrl} style={{ width: '100%' }} alt="image url" />
                     </CardContent>
                 </Card>
                 <br />
@@ -94,13 +94,13 @@ const DetailedMovieView = () => {
                     if (availableCopiesNum > 1) {
                     return (<>
                         <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copies</Typography>
-                        <Button variant="outlined" onClick={() => {rentCopy(); /*window.location.reload();*/}}>Rent</Button>
+                        <Button variant="outlined" onClick={() =>  rentCopy() }>Rent</Button>
                     </>
                     )
                     } else if (availableCopiesNum == 1) {
                     return (<>
                         <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copy</Typography>
-                        <Button variant="outlined" onClick={() => {rentCopy(); /*window.location.reload();*/}}>Rent</Button>
+                        <Button variant="outlined" onClick={() => rentCopy() }>Rent</Button>
                     </>
                     )} else {
                         return (<>
@@ -112,11 +112,12 @@ const DetailedMovieView = () => {
             </div>
             <div>
                 <h1>{movie.name}</h1>
-                <Typography variant="body2" component="p" color="textSecondary">Year 2020</Typography>
+                <Typography variant="body2" component="p" color="textSecondary">{movie.genre}</Typography>
+                <Typography variant="body2" component="p" color="textSecondary">{movie.year}</Typography>
     
                 <br />
                 <Typography variant="body2" component="p" color="textSecondary">
-                The plot follows the story of Zona Zamfirova (Katarina Radivojevic), a local rich man's daughter, and the vicissitudes of her affair with Mane (Vojin Cetkovic), an ordinary goldsmith. As it was undesirable for the daughter of a rich man to marry a craftsman, the two are at first divided, with the possibility of Zona marrying the son of other rich people.
+                    {movie.description}
                 </Typography>
             </div>
         </div>

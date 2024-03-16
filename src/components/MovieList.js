@@ -7,7 +7,6 @@ import MovieTile from './MovieTile';
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
-  // const effectRan = useRef(false);
 
   function getMovies() {
     fetch("http://localhost:8080/movies/allMovies", {
@@ -19,7 +18,6 @@ const MovieList = () => {
   }
 
   useEffect(() => {
-    // getMovies();
     return () => getMovies();
   }, [])
 
@@ -27,7 +25,6 @@ const MovieList = () => {
     navigate('/detailed-movie-view/' + id);
 }
 
-// console.log(movies);
   return (
     <div>
         <h1>Take a look at our movies...</h1>

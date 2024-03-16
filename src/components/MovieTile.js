@@ -13,7 +13,7 @@ const MovieTile = ({ movies, movieDetails }) => {
       <ImageListItem key={movie.name}>
         <img
               // srcSet="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg?w=248&fit=crop&auto=format&dpr=2 2x"
-              src="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg"
+              src={movie.imageUrl}
               alt={movie.name}
               loading="lazy"
             />
