@@ -94,13 +94,13 @@ const DetailedMovieView = () => {
                     if (availableCopiesNum > 1) {
                     return (<>
                         <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copies</Typography>
-                        <Button variant="outlined" onClick={() => {rentCopy(); /*window.location.reload();*/}}>Rent</Button>
+                        <Button variant="outlined" onClick={() =>  rentCopy() }>Rent</Button>
                     </>
                     )
                     } else if (availableCopiesNum == 1) {
                     return (<>
                         <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copy</Typography>
-                        <Button variant="outlined" onClick={() => {rentCopy(); /*window.location.reload();*/}}>Rent</Button>
+                        <Button variant="outlined" onClick={() => rentCopy() }>Rent</Button>
                     </>
                     )} else {
                         return (<>
