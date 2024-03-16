@@ -10,7 +10,7 @@ const NewMovieForm = () => {
     const [name, setName] = useState("");
     const [genre, setGenre] = useState("");
     const [description, setDescription] = useState("");
-    const [year, setYear] = useState(0);
+    const [year, setYear] = useState("");
     const [imageUrl, setImageUrl] = useState("https://www.amaltasindia.in/UploadPhoto/no_img.jpg");
 
     function addMovie() {
@@ -26,8 +26,18 @@ const NewMovieForm = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                alert("You successfully added a new movie.");
+                clearForm();
             })
     }
+
+    const clearForm = () => {
+        setName("");
+        setGenre("");
+        setDescription("");
+        setYear("");
+        setImageUrl("https://www.amaltasindia.in/UploadPhoto/no_img.jpg");
+    };
 
 
     const setProperty = (property, e) => {
@@ -48,37 +58,39 @@ const NewMovieForm = () => {
         }
     }
 
-
     return (
         <div>
             <form noValidate autoComplete="off">
                 <div>
                     <Card raised>
                         <CardContent>
-                            <img src={imageUrl} alt="no image url"/>
+                            <img src={imageUrl} style={{ width: '100%' }} alt="no image url"/>
                         </CardContent>
                     </Card>
+                    <br/>
                     <Input placeholder="Image url" inputProps={{ 'aria-label': 'description' }}
                         onChange={(e) => setProperty("imageUrl", e.target.value)}
                     />
                 </div>
                 <div>
                     <h1> <Input placeholder="Title" inputProps={{ 'aria-label': 'description' }}
+                        value={name}
                         onChange={(e) => setProperty("name", e.target.value)} /> </h1>
                     <h1> <Input placeholder="Genre" inputProps={{ 'aria-label': 'description' }}
+                        value={genre}
                         onChange={(e) => setProperty("genre", e.target.value)} /> </h1>
                     <h1> <Input placeholder="Year" input type="number" inputProps={{ 'aria-label': 'description' }}
+                        value={year}
                         onChange={(e) => setProperty("year", e.target.value)} /> </h1>
-                    <Typography variant="body2" component="p" color="textSecondary">By
-                    </Typography>
 
                     <br />
 
                     <TextField id="outlined-basic" label="Description" variant="outlined" multiline rows={10}
+                        value={description}
                         onChange={(e) => setProperty("description", e.target.value)} />
                     <br />
-                    <br /><br /><br />
-                    <Button variant="outlined" onClick={addMovie}>Done!</Button>
+                    <br />
+                    <Button variant="outlined" onClick={ addMovie }>Done!</Button>
                 </div>
             </form>
         </div>
