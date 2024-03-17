@@ -19,7 +19,6 @@ const UpdateMovieForms = () => {
         imageUrl: ''
     });
 
-
     function getMovie() {
         fetch("http://localhost:8080/movies/" + params.id, {
         })
@@ -43,7 +42,6 @@ const UpdateMovieForms = () => {
             }
         })
         .catch(error => {
-            // navigate('/');
             alert(error);
         })
     }
@@ -95,7 +93,6 @@ const UpdateMovieForms = () => {
             imageUrl: inputValues.imageUrl
         };
 
-
         fetch('http://localhost:8080/movies/' + params.id, {
         method: 'PUT',
         headers: {
@@ -104,13 +101,14 @@ const UpdateMovieForms = () => {
         body: JSON.stringify(updatedMovie)
         })
         .then(response => 
-            response.json())
+            response.json())             
         .then(updatedData => {
             console.log('Updated data:', updatedData);
             setMovie(updatedData);
+            alert("You have successfully added a new movie!");
         })
         .catch(error => {
-        console.error('Error updating data:', error);
+        console.error('Error updating a movie:', error);
         });
     };
 
@@ -151,7 +149,7 @@ const UpdateMovieForms = () => {
                         onChange={handleYearChange}
                         /> </label><br/>
                     <br />
-                    <TextField id="outlined-basic" label="Description" variant="outlined" multiline rows={10}
+                    <TextField id="outlined-basic" label="Description" variant="outlined" multiline rows={12}
                         value={inputValues.description}
                         onChange={handleDescriptionChange}
                         />

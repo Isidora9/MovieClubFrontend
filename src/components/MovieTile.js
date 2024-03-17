@@ -10,7 +10,7 @@ const MovieTile = ({ movies, movieDetails }) => {
   return (
   <>
     {movies.map((movie) => (
-      <ImageListItem key={movie.name}>
+      <ImageListItem key={movie.id}>
         <img
               // srcSet="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg?w=248&fit=crop&auto=format&dpr=2 2x"
               src={movie.imageUrl}
