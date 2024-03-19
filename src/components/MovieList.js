@@ -1,56 +1,37 @@
 import ImageList from '@mui/material/ImageList';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import MovieTile from './MovieTile';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(2);
   const [totalCount, setTotalCount] = useState(0);
+  const handleChange = (event, value) => {
+    setPage(value);
+};
 
   function getMovies() {
     fetch(`http://localhost:8080/movies/allMovies?page=${page}&size=${pageSize}`, {
       method: 'GET',
       credentials: 'same-origin',
-      // headers: this.getHeaders(),
     })
-
 
     .then(response => response.json())
     .then(data => {
-        console.log("Movies:", data.movies);
-        console.log("Total movies:", data.totalCount);
-        setMovies(data.movies);
-        setTotalCount(data.totalCount);
+      setMovies(data.movies);
+      setTotalCount(data.totalCount);
     })
     .catch(error => {
-        console.error('Error fetching movies:', error);
-
-
-
-    // .then(response => 
-    //   // response.json()
-
-    //   {
-    //     const totalCount = response.headers.get('X-Total-Count');
-    //     console.log(totalCount);
-    //     return Promise.all([response.json(), totalCount]);
-    //   }
-
-    //   )
-    // .then(([data, totalCount]) => {
-    //   console.log("Page: ", {page});
-    //   console.log(data);
-    //   console.log(totalCount);
-    //   setMovies(data);
+      console.error('Error fetching movies:', error);
     })
   }
 
   useEffect(() => {
-    // return () => getMovies();
     getMovies();
   }, [page, pageSize])
 
@@ -66,8 +47,9 @@ const MovieList = () => {
           <MovieTile movies={movies} movieDetails={movieDetails}/>
         </ImageList>
       </div>
-      <button onClick={() => setPage(page - 1)} disabled={page === 0}>Previous</button>
-      <button onClick={() => setPage(page + 1)} disabled={page === totalCount / 2 - 1}>Next</button>
+      <Stack spacing={2}>
+        <Pagination count={Math.ceil(totalCount / pageSize)} page={page} onChange={handleChange} />
+      </Stack>
     </div>
   )
 }
