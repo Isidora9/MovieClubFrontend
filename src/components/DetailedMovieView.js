@@ -43,7 +43,7 @@ const DetailedMovieView = () => {
                 if (response.ok) {
                     response.json()
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         setAvailableCopiesNum(data);
                     })
                 }

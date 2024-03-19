@@ -6,7 +6,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import { PropTypes } from 'prop-types';
 
 const MovieTile = ({ movies, movieDetails }) => {
-  console.log(movies);
+  //console.log(movies);
   return (
   <>
     {movies.map((movie) => (
