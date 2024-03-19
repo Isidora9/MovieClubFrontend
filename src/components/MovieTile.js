@@ -4,13 +4,14 @@ import InfoIcon from '@mui/icons-material/Info';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ImageListItem from '@mui/material/ImageListItem';
 import { PropTypes } from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './MovieTile.css';
 
 const MovieTile = ({ movies, movieDetails }) => {
-  //console.log(movies);
   return (
   <>
     {movies.map((movie) => (
-      <ImageListItem key={movie.id}>
+      <ImageListItem className='m-2 imageListItem' key={movie.id}>
         <img
               // srcSet="https://hendrickhudsonanchor.org/wp-content/uploads/2021/01/Dune2-577x900.jpg?w=248&fit=crop&auto=format&dpr=2 2x"
               src={movie.imageUrl}

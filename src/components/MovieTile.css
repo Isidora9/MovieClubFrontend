@@ -1,13 +1,5 @@
-.icon {
-    color: 'rgba(255, 255, 255, 0.54)';
-    /* color: aqua; */
-    }
 
-.gridListTitle {
-    height: "290px";
-    width: "190px";
-    }
-    
-.gridListTitle1 {
-    margin: "30px";
-    }
+.imageListItem {
+    /* border: 1px transparent #5b5b5b; */
+    box-shadow:  4px 4px 5px #5b5b5b;
+}

@@ -7,7 +7,6 @@ import MovieTile from './components/MovieTile';
 import NewMovieForm from './components/NewMovieForm';
 import UpdateMovieForm from './components/UpdateMovieForm';
 
-
 const App = () => {
   return (
     <div style={{ width: '100%' }}>
