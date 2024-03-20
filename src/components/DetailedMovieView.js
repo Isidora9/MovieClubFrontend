@@ -5,6 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './DetailedMovieView.css';
 
 
 const DetailedMovieView = () => {
@@ -43,7 +45,6 @@ const DetailedMovieView = () => {
                 if (response.ok) {
                     response.json()
                     .then(data => {
-                        // console.log(data);
                         setAvailableCopiesNum(data);
                     })
                 }
@@ -82,10 +83,10 @@ const DetailedMovieView = () => {
 
     return (
         <div>
-            <div>
-                <Card raised>
-                    <CardContent>
-                        <img src={movie.imageUrl} style={{ width: '100%' }} alt="image url" />
+            <div className="container2">
+                <Card className="bg-dark" raised>
+                    <CardContent className="cardContent">
+                        <img src={movie.imageUrl} alt="image url" className="img1"/>
                     </CardContent>
                 </Card>
                 <br />
@@ -94,27 +95,27 @@ const DetailedMovieView = () => {
                     if (availableCopiesNum > 1) {
                     return (<>
                         <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copies</Typography>
-                        <Button variant="outlined" onClick={() =>  rentCopy() }>Rent</Button>
+                        <Button className="button1" variant="contained" onClick={() =>  rentCopy() }>Rent</Button>
                     </>
                     )
                     } else if (availableCopiesNum == 1) {
                     return (<>
                         <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copy</Typography>
-                        <Button variant="outlined" onClick={() => rentCopy() }>Rent</Button>
+                        <Button className="button1" variant="contained" onClick={() => rentCopy() }>Rent</Button>
                     </>
                     )} else {
                         return (<>
                             <Typography variant="body2" component="p" color="textSecondary">{availableCopiesNum} available copies</Typography>
-                            <Button variant="outlined" onClick={() => rentCopy()} disabled>Rent</Button>
+                            <Button className="button1" variant="contained" onClick={() => rentCopy()} disabled>Rent</Button>
                         </>    
                     )}
                 })()}
             </div>
-            <div>
-                <h1>{movie.name}</h1>
-                <Typography variant="body2" component="p" color="textSecondary">{movie.genre}</Typography>
-                <Typography variant="body2" component="p" color="textSecondary">{movie.year}</Typography>
-    
+            <div className="textDiv">
+                <h1 className="movieName">{movie.name}</h1>
+                <Typography style={{ fontWeight: 'bold' }} variant="body2" component="p" color="textSecondary">
+                    &#183; {movie.year} &#183; {movie.genre} &#183;
+                </Typography>
                 <br />
                 <Typography variant="body2" component="p" color="textSecondary">
                     {movie.description}

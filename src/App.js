@@ -9,7 +9,7 @@ import UpdateMovieForm from './components/UpdateMovieForm';
 
 const App = () => {
   return (
-    <div style={{ width: '100%' }}>
+    <div>
       {/* <HashRouter>
         <Routes> */}
         <BrowserRouter>

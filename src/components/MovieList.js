@@ -43,7 +43,7 @@ const MovieList = () => {
 
   return (
     <div>
-      <h1 className='header'>Take a look at our movies...</h1>
+      <h1 className='header px-2'>Take a look at our movies...</h1>
       <div >
         <ImageList className='imageList' cols={pageSize} sx={{ width: '100%', height: '100%' }}>
           <MovieTile movies={movies} movieDetails={movieDetails}/>
