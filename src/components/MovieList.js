@@ -4,12 +4,14 @@ import React, { useEffect, useState } from "react";
 import MovieTile from './MovieTile';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import './MovieList.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(2);
+  const [pageSize, setPageSize] = useState(3);
   const [totalCount, setTotalCount] = useState(0);
   const handleChange = (event, value) => {
     setPage(value);
@@ -41,14 +43,14 @@ const MovieList = () => {
 
   return (
     <div>
-      <h1>Take a look at our movies...</h1>
-      <div>
-        <ImageList sx={{ width: '100%', height: '100%' }}>
+      <h1 className='header px-2'>Take a look at our movies...</h1>
+      <div >
+        <ImageList className='imageList' cols={pageSize} sx={{ width: '100%', height: '100%' }}>
           <MovieTile movies={movies} movieDetails={movieDetails}/>
         </ImageList>
       </div>
       <Stack spacing={2}>
-        <Pagination count={Math.ceil(totalCount / pageSize)} page={page} onChange={handleChange} />
+        <Pagination count={Math.ceil(totalCount / pageSize)} page={page} size="large" onChange={handleChange} />
       </Stack>
     </div>
   )
