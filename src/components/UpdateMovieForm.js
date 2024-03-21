@@ -105,7 +105,7 @@ const UpdateMovieForms = () => {
         .then(updatedData => {
             console.log('Updated data:', updatedData);
             setMovie(updatedData);
-            alert("You have successfully added a new movie!");
+            alert("You have successfully updated \"" + updatedData.name + "\" movie!");
         })
         .catch(error => {
         console.error('Error updating a movie:', error);
@@ -118,9 +118,8 @@ const UpdateMovieForms = () => {
 
 
     return (
-        <div>
-        <h1>Update a movie:</h1>
-        <div>
+        <div className="formContainer">
+            <h4>Update a movie:</h4>
             <form noValidate autoComplete="off">
                 <div>
                     <Card raised>
@@ -129,36 +128,34 @@ const UpdateMovieForms = () => {
                         </CardContent>
                     </Card>
                     <br/>
-                    <label>Image URL: <Input inputProps={{ 'aria-label': 'description' }}
-                        value={inputValues.imageUrl}
-                        onChange={handleImageUrlChange}                    
-                        />
-                    </label>
+                    <label>Image URL:</label><br/>
+                    <Input value={inputValues.imageUrl} sx={{ minWidth: '60%', mb:3 }}
+                        onChange={handleImageUrlChange} />
                 </div>
                 <div>
-                    <label>Movie name: <Input inputProps={{ 'aria-label': 'description' }}
-                        value={inputValues.name}
-                        onChange={handleNameChange}
-                        /> </label> <br/>
-                    <label>Movie genre: <Input inputProps={{ 'aria-label': 'description' }}
-                        value={inputValues.genre}
-                        onChange={handleGenreChange}
-                        /> </label><br/>
-                    <label>Year: <Input input type="number" inputProps={{ 'aria-label': 'description' }}
-                        value={inputValues.year}
-                        onChange={handleYearChange}
-                        /> </label><br/>
-                    <br />
+
+                    <label>Title:</label><br/>
+                    <Input value={inputValues.name} sx={{ minWidth: '60%', mb:3 }}
+                        onChange={handleNameChange} />
+                        <br/>
+
+                    <label>Genre:</label><br/>
+                    <Input value={inputValues.genre} sx={{ minWidth: '60%', mb:3 }}
+                        onChange={handleGenreChange} />
+                        <br/>
+
+                    <label>Year:</label><br/>
+                    <Input type="number" value={inputValues.year} sx={{ minWidth: '60%', mb:3 }}
+                        onChange={handleYearChange} />
+                        <br />
+
                     <TextField id="outlined-basic" label="Description" variant="outlined" multiline rows={12}
                         value={inputValues.description}
-                        onChange={handleDescriptionChange}
-                        />
+                        onChange={handleDescriptionChange} />
                     <br />
-                    <br />
-                    <Button onClick={handleUpdateData} variant="outlined">Update</Button>
+                    <Button className="button1" sx={{ mt:2 }} onClick={handleUpdateData} variant="outlined">Update</Button>
                 </div>
             </form>
-        </div>
         </div>
     );
 };
