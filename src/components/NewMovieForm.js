@@ -61,7 +61,7 @@ const NewMovieForm = () => {
 
     return (
         <div className="formContainer">
-            <form className="form1" noValidate autoComplete="off">
+            <form noValidate autoComplete="off">
                 <div>
                     <Card raised>
                         <CardContent>
@@ -84,7 +84,7 @@ const NewMovieForm = () => {
                         value={year}
                         onChange={(e) => setProperty("year", e.target.value)} />
 
-                    <TextField id="outlined-basic" sx={{ mt:4 }} label="Description" variant="outlined" multiline rows={10}
+                    <TextField id="outlined-basic" sx={{ mt:4 }} label="Description" variant="outlined" multiline rows={12}
                         value={description}
                         onChange={(e) => setProperty("description", e.target.value)} />
                     <br/>
