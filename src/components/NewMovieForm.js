@@ -84,9 +84,22 @@ const NewMovieForm = () => {
                         value={year}
                         onChange={(e) => setProperty("year", e.target.value)} />
 
-                    <TextField id="outlined-basic" sx={{ mt:4 }} label="Description" variant="outlined" multiline rows={12}
+                    <TextField id="outlined-multiline-static" sx={{ mt:4 }} label="Description"
+                        multiline minRows={8}
                         value={description}
-                        onChange={(e) => setProperty("description", e.target.value)} />
+                        onChange={(e) => {
+                            const inputText = e.target.value;
+                            if (inputText.length <= 250) {
+                                setDescription(inputText);
+                            }
+                            else{
+                                alert("Description can not have more than 200 characters!");
+                            }
+                        }}
+                        inputProps={{
+                            maxLength: 251
+                        }}
+                        />
                     <br/>
                     <Button className="button1" variant="outlined" sx={{ mt:2 }} onClick={ addMovie }>Done!</Button>
                 </div>
