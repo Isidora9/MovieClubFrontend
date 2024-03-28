@@ -149,9 +149,11 @@ const UpdateMovieForms = () => {
                         onChange={handleYearChange} />
                         <br />
 
-                    <TextField id="outlined-basic" label="Description" variant="outlined" multiline rows={12}
+                    <TextField id="outlined-multiline-static" label="Description" 
+                        multiline minRows={8}
                         value={inputValues.description}
-                        onChange={handleDescriptionChange} />
+                        onChange={handleDescriptionChange} 
+                        inputProps={{ maxLength: 251 }} />
                     <br />
                     <Button className="button1" sx={{ mt:2 }} onClick={handleUpdateData} variant="outlined">Update</Button>
                 </div>
