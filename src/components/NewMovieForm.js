@@ -101,7 +101,7 @@ const NewMovieForm = () => {
                         }}
                         />
                     <br/>
-                    <Button className="button1" variant="outlined" sx={{ mt:2 }} onClick={ addMovie }>Done!</Button>
+                    <Button className="button1" variant="contained" sx={{ mt:2 }} onClick={ addMovie }>Done!</Button>
                 </div>
             </form>
         </div>
