@@ -155,7 +155,7 @@ const UpdateMovieForms = () => {
                         onChange={handleDescriptionChange} 
                         inputProps={{ maxLength: 251 }} />
                     <br />
-                    <Button className="button1" sx={{ mt:2 }} onClick={handleUpdateData} variant="outlined">Update</Button>
+                    <Button className="button1" sx={{ mt:2 }} onClick={handleUpdateData} variant="contained">Update</Button>
                 </div>
             </form>
         </div>

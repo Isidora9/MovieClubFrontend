@@ -1,5 +1,30 @@
 
 .imageListItem {
-    /* border: 1px transparent #5b5b5b; */
     box-shadow:  4px 4px 5px #5b5b5b;
+    position: relative;
+}
+
+.imageListItem i {
+    visibility:hidden;
+}
+
+.imageListItem:hover i {
+    visibility:visible;
+    cursor: pointer;
+}
+
+.imageListItem:hover {
+    filter: brightness(120%);
+    transform: scale(0.98);
+}
+
+i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 100px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0.8;
 }
